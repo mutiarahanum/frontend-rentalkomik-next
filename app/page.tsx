@@ -9,10 +9,13 @@ import {
 } from '../lib/api';
 
 async function HalamanUtama() {
-  const kategoriList = await getKategoriList();
-  const komikList = await getKomikList();
-  const anggotaList = await getAnggotaList();
-  const peminjamanList = await getPeminjamanList();
+  const [kategoriList, komikList, anggotaList, peminjamanList] =
+  await Promise.all([
+    getKategoriList(),
+    getKomikList(),
+    getAnggotaList(),
+    getPeminjamanList(),
+  ]);
 
   return (
     <>

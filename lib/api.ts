@@ -15,12 +15,22 @@ async function fetchAPI<T>(endpoint: string): Promise<T> {
   return hasil.data as T;
 }
 
-export function getKategoriList(): Promise<Kategori[]> {
-  return fetchAPI<Kategori[]>('/kategori');
+export async function getKategoriList(): Promise<Kategori[]> {
+  const response = await fetch(`${API_BASE_URL}/kategori`, {
+    headers: { Authorization: `Bearer ${API_TOKEN}` },
+    next: { revalidate: 60 },
+  });
+  const hasil = await response.json();
+  return hasil.data;
 }
 
-export function getKomikList(): Promise<Komik[]> {
-  return fetchAPI<Komik[]>('/komik');
+export async function getKomikList(): Promise<Komik[]> {
+  const response = await fetch(`${API_BASE_URL}/komik`, {
+    headers: { Authorization: `Bearer ${API_TOKEN}` },
+    next: { revalidate: 15 },
+  });
+  const hasil = await response.json();
+  return hasil.data;
 }
 
 export async function getKomikById(id: string): Promise<Komik | null> {
