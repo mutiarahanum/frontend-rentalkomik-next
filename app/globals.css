@@ -223,3 +223,13 @@ body {
   margin-top: 1rem;
   max-width: 480px;
 }
+
+.logout-button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
